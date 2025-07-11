@@ -1,5 +1,11 @@
 import sys, json, argparse
 
+"""
+A tool for extracting, formatting, and displaying the parameters or a URL.
+Parameters can be sorted alphanumerically, along with filtering for empty
+parameters.
+"""
+
 def main():
 	parser = argparse.ArgumentParser(prog='URL Parameter Extractor', description='Breaks a url into its components, arranged visually')
 	parser.add_argument('url')
@@ -14,7 +20,6 @@ def main():
 
 	args = parser.parse_args()
 
-	# Extract URL components
 	url = sys.argv[1]
 	base = url[:(url.index('?') + 1)]
 	tail = url[(url.index('?') + 1):]
@@ -40,7 +45,6 @@ def main():
 		empty = True
 		params = { k: '' for k, v in params.items() if v is None or v == '' }
 
-	# Display extracted components
 	print(f'\nDomain\n ▪ {domain}\n')
 	print(f'Path\n ▪ {path}\n')
 
